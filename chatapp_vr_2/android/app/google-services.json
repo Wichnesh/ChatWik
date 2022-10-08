@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "283665592601",
+    "project_id": "chatwik-601a6",
+    "storage_bucket": "chatwik-601a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:283665592601:android:c3b55a537e24b2e5259588",
+        "android_client_info": {
+          "package_name": "com.example.demo_application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "283665592601-j41n052924j7c6p9e3d0e0tu3rg3uijq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.demo_application",
+            "certificate_hash": "dda35201987fea6af152f72f755d6ae2d511d9eb"
+          }
+        },
+        {
+          "client_id": "283665592601-hflq1cai2viu07e9dtrb3kd2fhp0189q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFOOM7BY5ADlv42R6dHJVNfMwb36uCbXM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "283665592601-hflq1cai2viu07e9dtrb3kd2fhp0189q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
