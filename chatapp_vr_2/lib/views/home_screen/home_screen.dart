@@ -3,6 +3,8 @@ import 'package:demo_application/views/home_screen/Screens/Settings.dart';
 import 'package:demo_application/views/home_screen/Screens/chats.dart';
 import 'package:flutter/cupertino.dart';
 import 'Screens/People.dart';
+import 'Screens/chat_details.dart';
+import 'Screens/select_contact_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -10,6 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
+      debugShowCheckedModeBanner: false,
       home: Homepage(),
       theme: CupertinoThemeData(brightness: Brightness.light),
     );
@@ -18,7 +21,7 @@ class HomeScreen extends StatelessWidget {
 
 class Homepage extends StatelessWidget {
   Homepage({Key? key}) : super(key: key);
-  var screens = [Chats(), calls(), people(), Settings()];
+  var screens = [Chats(), calls(), people(), Settings(), SelectContactScreen()];
 
   @override
   Widget build(BuildContext context) {

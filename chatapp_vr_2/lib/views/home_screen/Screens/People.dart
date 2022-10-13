@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cupertino_list_tile/cupertino_list_tile.dart';
+import 'package:demo_application/consts/consts.dart';
 import 'package:demo_application/views/home_screen/Screens/chat_details.dart';
+import 'package:demo_application/views/home_screen/Screens/select_contact_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -14,10 +16,15 @@ class people extends StatelessWidget {
         context,
         CupertinoPageRoute(
             builder: (context) => ChatDetail(
-                  friendid: name,
-                  friendName: id,
+                  friendUid: id,
+                  friendName: name,
                 )));
   }
+
+  // void callContactScreen() {
+  //   Navigator.push(context,
+  //       CupertinoPageRoute(builder: (context) => SelectContactScreen()));
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -28,22 +35,34 @@ class people extends StatelessWidget {
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return Center(
+            return const Center(
               child: Text('something went Wrong'),
             );
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: Text('Loading'),
             );
           }
 
           if (snapshot.hasData) {
-            return CustomScrollView(
+            return CupertinoPageScaffold(
+                child: CustomScrollView(
               slivers: [
                 CupertinoSliverNavigationBar(
-                  largeTitle: Text("people"),
+                  automaticallyImplyLeading: false,
+                  largeTitle: const Text("people"),
+                  trailing: CupertinoButton(
+                    padding: EdgeInsets.zero,
+                    child: const Icon(Icons.add),
+                    onPressed: () {
+                      Navigator.of(context)
+                          .push(CupertinoPageRoute(builder: (context) {
+                        return const SelectContactScreen();
+                      }));
+                    },
+                  ),
                 ),
                 SliverList(
                   delegate: SliverChildListDelegate(
@@ -62,7 +81,7 @@ class people extends StatelessWidget {
                   ),
                 )
               ],
-            );
+            ));
           }
           return Container();
         });

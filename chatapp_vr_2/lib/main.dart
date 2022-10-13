@@ -4,6 +4,7 @@ import 'package:demo_application/views/home_screen/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
 main() async {
@@ -14,7 +15,7 @@ main() async {
   );
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const App());
+  runApp(ProviderScope(child: App()));
 }
 
 class App extends StatefulWidget {
