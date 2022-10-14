@@ -71,7 +71,7 @@ class _CupertinoSnackBarState extends State<_CupertinoSnackBar> {
           ),
           child: Text(
             widget.message,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 14.0,
               color: CupertinoColors.secondaryLabel,
             ),

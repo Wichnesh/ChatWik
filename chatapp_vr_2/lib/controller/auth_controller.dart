@@ -74,7 +74,7 @@ class Authcontroller extends GetxController {
         await store.set({
           'id': user.uid,
           'name': usernameController.text.toString(),
-          'phone': phoneController.text.toString(),
+          'phone': '+91${phoneController.text}',
           'status': 'Available',
         });
         // show toast of login
