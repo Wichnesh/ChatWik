@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cupertino_list_tile/cupertino_list_tile.dart';
 import 'package:demo_application/consts/consts.dart';
-import 'package:demo_application/views/home_screen/Screens/chat_details.dart';
-import 'package:demo_application/views/home_screen/Screens/select_contact_screen.dart';
+import 'package:demo_application/views/home_screen/Screens/chats/screen/MobileChatScreen.dart';
+import 'package:demo_application/select_contacts/screen/select_contact_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -11,15 +11,15 @@ class people extends StatelessWidget {
 
   var currentuser = FirebaseAuth.instance.currentUser?.uid;
 
-  void callChatDetailScreen(BuildContext context, String name, String id) {
-    Navigator.push(
-        context,
-        CupertinoPageRoute(
-            builder: (context) => ChatDetail(
-                  friendUid: id,
-                  friendName: name,
-                )));
-  }
+  // void callChatDetailScreen(BuildContext context, String name, String id) {
+  //   Navigator.push(
+  //       context,
+  //       CupertinoPageRoute(
+  //           builder: (context) => const MobileChatScreen(
+  //                 Name: 'RRR',
+  //                 Id: '12345',
+  //               )));
+  // }
 
   // void callContactScreen() {
   //   Navigator.push(context,
@@ -71,10 +71,10 @@ class people extends StatelessWidget {
                         Map<String, dynamic>? data =
                             document.data()! as Map<String, dynamic>;
                         return CupertinoListTile(
-                          onTap: () => callChatDetailScreen(
-                              context, data['name'], data['id']),
+                          // onTap: () => callChatDetailScreen(
+                          //     context, data['name'], data['id']),
                           title: Text(data['name']),
-                          subtitle: Text(data['status']),
+                          subtitle: Text(data['phone']),
                         );
                       },
                     ).toList(),

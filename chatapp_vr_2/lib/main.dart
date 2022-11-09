@@ -1,4 +1,6 @@
 import 'package:demo_application/consts/consts.dart';
+import 'package:demo_application/router.dart';
+import 'package:demo_application/views/Auth_screen/loginScreen.dart';
 import 'package:demo_application/views/Auth_screen/verification_screen.dart';
 import 'package:demo_application/views/home_screen/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,12 +12,12 @@ import 'package:get/get.dart';
 main() async {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
-        statusBarColor: Colors.purpleAccent,
-        statusBarIconBrightness: Brightness.dark),
+      statusBarColor: Colors.transparent,
+    ),
   );
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(ProviderScope(child: App()));
+  runApp(const ProviderScope(child: App()));
 }
 
 class App extends StatefulWidget {
@@ -55,12 +57,17 @@ class _AppState extends State<App> {
       debugShowCheckedModeBanner: false,
       home: isUser ? const HomeScreen() : const ChatApp(),
       title: appname,
+      onGenerateRoute: (settings) => generateRoute(settings),
     );
   }
 }
 
 class ChatApp extends StatelessWidget {
   const ChatApp({super.key});
+
+  void navigateToLoginScreen(BuildContext context) {
+    Navigator.pushNamed(context, LoginScreen.routeName);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -130,8 +137,7 @@ class ChatApp extends StatelessWidget {
                         padding: const EdgeInsets.all(16),
                       ),
                       onPressed: () {
-                        Get.to(() => const VerificationScreen(),
-                            transition: Transition.downToUp);
+                        navigateToLoginScreen(context);
                       },
                       child: cont.text.semiBold.size(16).make(),
                     ),

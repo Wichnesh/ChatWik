@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:demo_application/Model/User_model.dart';
 import 'package:demo_application/consts/consts.dart';
 import 'package:demo_application/views/home_screen/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class Authcontroller extends GetxController {
+  late final FirebaseFirestore firestore;
   //textcontrollers
   var usernameController = TextEditingController();
   var phoneController = TextEditingController();
@@ -74,12 +76,13 @@ class Authcontroller extends GetxController {
         await store.set({
           'id': user.uid,
           'name': usernameController.text.toString(),
-          'phone': phoneController.text.toString(),
-          'status': 'Available',
+          'phone': '+91${phoneController.text}',
+          'isOnline': true,
+          'groupID': [],
         });
         // show toast of login
         VxToast.show(context, msg: loggedin);
-        Get.offAll(() => const HomeScreen(), transition: Transition.downToUp);
+        Get.offAll(() => HomeScreen(), transition: Transition.downToUp);
       }
     } catch (e) {
       VxToast.show(context, msg: e.toString());

@@ -1,6 +1,7 @@
-import 'package:demo_application/controller/auth_controller.dart';
 import 'package:demo_application/main.dart';
 import 'package:flutter/material.dart';
+
+import '../../Auth_screen/controller&repository/auth_controller.dart';
 
 class Settings extends StatelessWidget {
   const Settings({Key? key}) : super(key: key);

@@ -1,11 +1,11 @@
 import 'package:demo_application/consts/colors.dart';
-import 'package:demo_application/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:demo_application/consts/strings.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../consts/utils.dart';
+import 'controller&repository/auth_controller.dart';
 
 class VerificationScreen extends StatelessWidget {
   const VerificationScreen({Key? key}) : super(key: key);
